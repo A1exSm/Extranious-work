@@ -1,0 +1,200 @@
+Table name: User 
+Attributes 
+Email 
+Date_of_birth 
+Creation_date 
+Username 
+PRIMARY KEY (Email) 
+FOREIGN KEY (Referred_by_User) REFERENCES User (Email) 
+
+Table name: User_Library 
+Attributes 
+UserEmail 
+Achievement_completion 
+Total_PlayTime 
+PRIMARY KEY (UserEmail) 
+FOREIGN KEY (UserEmail) REFERENCES table-User (Email) 
+
+Table name: Personal_Game 
+Attributes 
+Invoice_ID 
+GameTitle 
+GameSerial_number 
+Shared_Redemption_Key 
+User_Email 
+Redemption_key 
+User_Rating 
+Completion_Status 
+Time_played 
+Last_opened 
+PRIMARY KEY (Invoice_ID, GameTitle, GameSerial_number) 
+FOREIGN KEY (Shared_Redemption_Key) REFERENCES Personal_Game (Redemption_Key) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+
+Table name: Game 
+Attributes 
+Title 
+Serial_number 
+Main_category 
+Required_Storage 
+Studio 
+Rating 
+Price 
+PRIMARY KEY (Title, Serial_number) 
+
+Table name: VR_game 
+Attributes 
+GameTitle 
+GameSerial_number 
+Comfort_rating 
+Play_position 
+VR_type 
+PRIMARY KEY (GameTitle, GameSerial_number) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+
+Table name: Console_game 
+Attributes 
+GameTitle 
+GameSerial_number 
+Name 
+Version 
+PRIMARY KEY (GameTitle, GameSerial_number) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+
+Table name: Computer_+game 
+Attributes 
+GameTitle 
+GameSerial_number 
+Min_Ram 
+Min_GPU 
+Min_CPU 
+Operating_system 
+OS_Version 
+PRIMARY KEY (GameTitle, GameSerial_number) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+
+Table name: Category 
+Attributes 
+Name 
+Age_restriction 
+Device_specific 
+PRIMARY KEY (Name) 
+
+Table name: Game_Category 
+Attributes 
+GameTitle 
+GameSerial_number 
+CategoryName 
+PRIMARY KEY (GameTitle, GameSerial_number, CategoryName) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+FOREIGN KEY (CategoryName) REFERENCES  Category (Name)
+
+
+
+
+
+
+
+
+
+
+Table name: User 
+Attributes 
+Email varchar(100)
+Date_of_birth date(8)
+Creation_date date(8)
+Username varchar(100)
+PRIMARY KEY (Email) 
+FOREIGN KEY (Referred_by_User) REFERENCES User (Email) 
+
+Table name: User_Library 
+Attributes 
+UserEmail varchar(100)
+Achievement_completion integer(2)
+Total_PlayTime time(7)
+PRIMARY KEY (UserEmail) 
+FOREIGN KEY (UserEmail) REFERENCES table-User (Email) 
+
+Table name: Personal_Game 
+Attributes 
+Invoice_ID integer(10)
+GameTitle varchar(200)
+GameSerial_number integer(20)
+Shared_Redemption_Key varchar(100)
+User_Email varchar(100)
+Redemption_key integer(10)
+User_Rating integer(1)
+Completion_Status varchar(11)
+Time_played integer(6)
+Last_opened date
+PRIMARY KEY (Invoice_ID, GameTitle, GameSerial_number) 
+FOREIGN KEY (Shared_Redemption_Key) REFERENCES Personal_Game (Redemption_Key) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+
+Table name: Game 
+Attributes 
+Title varchar(200)
+Serial_number integer(20)
+Main_category varchar(100)
+Required_Storage integer(10)
+Studio varchar(100)
+Rating integer(1)
+Price integer(10)
+PRIMARY KEY (Title, Serial_number) 
+
+Table name: VR_game 
+Attributes 
+GameTitle varchar(200)
+GameSerial_number integer(20)
+Comfort_rating integer(1)
+Play_position varchar(100)
+VR_type varchar(100)
+PRIMARY KEY (GameTitle, GameSerial_number) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+
+Table name: Console_game 
+Attributes 
+GameTitle varchar(200)
+GameSerial_number integer(20)
+Name varchar(100)
+Version integer(10)
+PRIMARY KEY (GameTitle, GameSerial_number) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+
+Table name: Computer_+game 
+Attributes 
+GameTitle varchar(200)
+GameSerial_number integer(20)
+Min_Ram integer(10)
+Min_GPU varchar(100)
+Min_CPU varchar(100)
+Operating_system varchar(100)
+OS_Version integer(10)
+PRIMARY KEY (GameTitle, GameSerial_number) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+
+Table name: Category 
+Attributes 
+Name varchar(100)
+Age_restriction integer(3)
+Device_specific varchar(3)
+PRIMARY KEY (Name) 
+
+Table name: Game_Category 
+Attributes 
+GameTitle varchar(200)
+GameSerial_number integer(20)
+CategoryName varchar(100)
+PRIMARY KEY (GameTitle, GameSerial_number, CategoryName) 
+FOREIGN KEY (GameTitle) REFERENCES Game (Title) 
+FOREIGN KEY (GameSerial_number) REFERENCES Game (Serial_number) 
+FOREIGN KEY (CategoryName) REFERENCES  Category (Name)
